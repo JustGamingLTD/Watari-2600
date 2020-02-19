@@ -7,5 +7,5 @@ public:
 	bool Initialize();
 
 private:
-	uint8_t* memory[128];
+	char* memory[128];
 };

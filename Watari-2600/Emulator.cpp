@@ -6,7 +6,7 @@ bool Emulator::initializeMemory()
 	do
 	{
 		loader = new Loader;
-		if (!loader->loadRom())
+		if (!loader->loadRom("./Roms/dk.a26"))
 		{
 			break;
 		}

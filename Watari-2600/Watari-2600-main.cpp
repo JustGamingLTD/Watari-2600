@@ -7,8 +7,6 @@ int main()
 	int retVal = -1;
 	do
 	{
-
-
 		Emulator* emulator = new Emulator;
 		
 		if (!emulator->initializeMemory())

@@ -9,20 +9,45 @@ bool Loader::loadRom(const char* romName)
 	{
 		rom = new ROM;
 
-		std::fstream romFile;
-		romFile.open(romName);
-		uint8_t* romBytes[4096];
-		if (romFile.is_open())
+		if (!loadFile(romName))
 		{
-			while (!romFile.eof())
-			{
-				romFile.get();
-			}
+			break;
 		}
+
+		if (!createRom())
+		{
+			break;
+		}
+
 		retVal = true;
-		romFile.close();
 
 	} while (false);
 
 	return retVal;
+}
+
+bool Loader::loadFile(const char* romName)
+{
+	bool retVal = false;
+
+	do
+	{
+		std::fstream romFile(romName);
+		if (!romFile.good())
+		{
+			break;
+		}
+
+		romFile.read(*romBytes, 4096);
+		romFile.close();
+
+		retVal = true;
+	} while (false);
+
+	return retVal;
+}
+
+bool Loader::createRom()
+{
+	return rom->setBytes(*romBytes);
 }

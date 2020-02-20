@@ -10,12 +10,15 @@ bool Emulator::initializeMemory()
 		{
 			break;
 		}
+		rom = loader->rom;
 
 		memory = new Memory;
 		if (!memory->Initialize())
 		{
 			break;
 		}
+
+
 
 		retVal = true;
 	} while (false);

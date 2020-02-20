@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 
 #include "Loader.h"
 
@@ -38,8 +39,12 @@ bool Loader::loadFile(const char* romName)
 			break;
 		}
 
-		romFile.read(*romBytes, 4096);
+		char bytes[4096];
+
+		romFile.read(bytes, 4096);
 		romFile.close();
+
+		*romBytes = bytes;
 
 		retVal = true;
 	} while (false);

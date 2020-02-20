@@ -1,10 +1,13 @@
 #pragma once
+
 class ROM
 {
 public:
 	bool setBytes(char rom[])
 	{
 		*bytes = rom;
+		
+
 		return true;
 	}
 private:
